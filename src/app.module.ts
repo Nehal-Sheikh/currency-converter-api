@@ -32,6 +32,7 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
         database: configService.get<string>('DB_NAME'),
         entities: [User, SupportedCurrency, CurrencyRate, ConversionRecord],
         synchronize: true,
+        ssl: configService.get<string>('DB_SSL') === 'true' ? { rejectUnauthorized: true } : false,
       }),
     }),
     ThrottlerModule.forRoot([
